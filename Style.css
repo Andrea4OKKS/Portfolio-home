@@ -6,8 +6,7 @@ body {
 .topnav {
   text-align: right;
   overflow: hidden;
-  border: green;
-  border-radius: 20px;
+  border: green 3px;
 }
 
 .topnav a {
@@ -20,7 +19,8 @@ body {
 }
 
 .topnav a:hover {
-    
+    background-color: lightgrey;
+    color: black;
 }
 
 .topnav a.active {
