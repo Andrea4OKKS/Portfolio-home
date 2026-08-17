@@ -4,6 +4,7 @@ body {
 }
 
 .topnav {
+  text-align: right;
   overflow: hidden;
   background-color: #333;
 }
