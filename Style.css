@@ -20,8 +20,7 @@ body {
 }
 
 .topnav a:hover {
-  background-color: black;
-  color: black;
+    
 }
 
 .topnav a.active {
