@@ -1,3 +1,50 @@
-h1 {
-    color: aqua;
-}
+.navbar {
+            display: flex; /* Dispone gli elementi in riga */
+            justify-content: space-between; /* Spinge il logo a sinistra e il menu a destra */
+            align-items: center; /* Centra verticalmente gli elementi */
+            background-color: #2c3e50; /* Colore di sfondo scuro */
+            padding: 15px 40px; /* Spazio interno */
+        }
+
+        /* 3. Stile del Logo */
+        .logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none; /* Rimuove la sottolineatura dal link */
+        }
+
+        /* 4. Contenitore dei link */
+        .nav-links {
+            list-style: none; /* Rimuove i pallini della lista */
+            display: flex;
+            gap: 25px; /* Spazio tra un link e l'altro */
+        }
+
+        /* 5. Stile dei singoli link */
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease; /* Transizione morbida per l'effetto hover */
+        }
+
+        /* 6. Effetto Hover (quando passi il mouse sopra il link) */
+        .nav-links a:hover {
+            color: #3498db; /* Cambia colore in azzurro */
+        }
+
+        /* 7. Adattamento per gli schermi dei cellulari */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+            }
+        }
