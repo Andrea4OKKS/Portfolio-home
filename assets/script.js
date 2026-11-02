@@ -6,6 +6,9 @@ const EVENT = {
   location: "Chiesa di San Giuseppe, Via Largo Isonzo 49, Monfalcone (GO)",
 };
 
+// ===== Link del Foglio Google (Apps Script → Distribuisci → URL app web) =====
+const RSVP_URL = "";
+
 // Nav: sfondo allo scroll + menu mobile
 const nav = document.getElementById("nav");
 const toggle = document.getElementById("navToggle");
@@ -66,10 +69,35 @@ document.getElementById("copyIban").addEventListener("click", async e => {
   setTimeout(() => (e.target.textContent = "Copia IBAN"), 2500);
 });
 
-// RSVP (demo: in seguito verrà collegato a un servizio reale, es. Google Forms / Formspree)
-document.getElementById("rsvpForm").addEventListener("submit", e => {
+// RSVP → Foglio Google
+document.getElementById("rsvpForm").addEventListener("submit", async e => {
   e.preventDefault();
-  const nome = e.target.nome.value.trim().split(" ")[0];
-  document.getElementById("rsvpMsg").textContent = `Grazie ${nome}! La tua risposta è stata registrata 🤍`;
-  e.target.reset();
+  const form = e.target;
+  const msg = document.getElementById("rsvpMsg");
+  const btn = form.querySelector("button[type=submit]");
+  msg.classList.remove("error");
+
+  if (!RSVP_URL) {
+    msg.classList.add("error");
+    msg.textContent = "Il modulo non è ancora attivo: per ora contatta direttamente gli sposi.";
+    return;
+  }
+
+  const nome = form.nome.value.trim().split(" ")[0];
+  btn.disabled = true;
+  btn.textContent = "Invio in corso…";
+  try {
+    // no-cors: Google Apps Script non restituisce intestazioni CORS leggibili
+    await fetch(RSVP_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams(new FormData(form)) });
+    msg.textContent = form.presenza.value.startsWith("Sì")
+      ? `Grazie ${nome}! Non vediamo l'ora di festeggiare con te 🤍`
+      : `Grazie ${nome}, ci mancherai! Abbiamo ricevuto la tua risposta 🤍`;
+    form.reset();
+  } catch {
+    msg.classList.add("error");
+    msg.textContent = "Ops, invio non riuscito. Controlla la connessione e riprova.";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Invia conferma";
+  }
 });

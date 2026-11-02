@@ -234,6 +234,9 @@ a { color: var(--rose); }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: none; border-color: var(--blush); box-shadow: 0 0 0 3px rgba(239, 211, 207, .5);
 }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.rsvp .btn[disabled] { opacity: .6; cursor: wait; transform: none; }
+.rsvp__msg.error { color: var(--rose); }
 .rsvp .btn { width: 100%; justify-content: center; margin-top: .4rem; }
 .rsvp__msg { text-align: center; margin-top: 1rem; font-family: var(--serif); font-size: 1.2rem; color: var(--sage-dark); min-height: 1.5em; }
 .contacts { margin-top: 2rem; color: var(--ink-soft); font-size: .95rem; }
