@@ -26,6 +26,9 @@
         radial-gradient(ellipse 50% 20% at 30% 100%, rgba(150, 210, 236, .5), transparent 70%),
         linear-gradient(160deg, #dff0f8 0%, #ffffff 22%, #e4f3fa 40%, #ffffff 58%, #e8f5fb 74%, #cbe8f5 100%);
     }
+    .fiori { position: fixed; width: clamp(180px, 52vw, 440px); pointer-events: none; z-index: -1; }
+    .fiori--tl { top: 0; left: 0; }
+    .fiori--br { bottom: 0; right: 0; }
     h1 { font-family: "Great Vibes", cursive; font-weight: 400; font-size: clamp(3.5rem, 14vw, 7rem); line-height: 1.1; }
     h1 span { color: #587a9e; font-size: .7em; }
     .date { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.4rem, 5vw, 2rem); letter-spacing: .15em; margin: .6rem 0 1.6rem; }
@@ -33,6 +36,8 @@
   </style>
 </head>
 <body>
+  <img class="fiori fiori--tl" src="assets/fiori-tl.png" alt="" aria-hidden="true">
+  <img class="fiori fiori--br" src="assets/fiori-mr.png" alt="" aria-hidden="true">
   <main>
     <h1>Noemi <span>&amp;</span> Luca</h1>
     <p class="date">17 · 09 · 2027</p>
