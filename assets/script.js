@@ -1,9 +1,9 @@
 // ===== Dati evento (da aggiornare con quelli reali) =====
 const EVENT = {
-  title: "Matrimonio Giulia & Marco",
-  start: new Date("2027-06-12T16:00:00+02:00"),
-  end: new Date("2027-06-13T01:00:00+02:00"),
-  location: "Villa delle Rose, Via delle Colline 24, Borgo Antico (FI)",
+  title: "Matrimonio Noemi & Luca",
+  start: new Date("2027-09-17T11:00:00+02:00"),
+  end: new Date("2027-09-17T23:00:00+02:00"),
+  location: "Monfalcone (GO)",
 };
 
 // Nav: sfondo allo scroll + menu mobile
