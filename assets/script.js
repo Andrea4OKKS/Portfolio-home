@@ -7,7 +7,7 @@ const EVENT = {
 };
 
 // ===== Link del Foglio Google (Apps Script → Distribuisci → URL app web) =====
-const RSVP_URL = "";
+const RSVP_URL = "https://script.google.com/macros/s/AKfycbws2HloVqnYOffxMwAgXOd2fX14nct3j8dw61OsraYmrST8HlinZZJKQwedeQ3b-qd3vw/exec";
 
 // Nav: sfondo allo scroll + menu mobile
 const nav = document.getElementById("nav");
