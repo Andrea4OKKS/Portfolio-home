@@ -32,7 +32,7 @@ body {
 }
 /* Sfondo acquerello come l'invito "Nozze": velature azzurre su bianco, in diagonale */
 body::before {
-  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100lvh; z-index: -1; pointer-events: none; transform: translateZ(0);
   background:
     radial-gradient(ellipse 70% 30% at -5% 52%, rgba(120, 198, 232, .85), transparent 70%),
     radial-gradient(ellipse 55% 28% at 105% 28%, rgba(120, 198, 232, .8), transparent 70%),
@@ -158,7 +158,7 @@ a { color: var(--dusty); }
 .deco { position: absolute; pointer-events: none; z-index: 0; width: clamp(150px, 40vw, 380px); height: auto; }
 .deco--tr { top: 0; right: 0; }
 .deco--bl { bottom: 0; left: 0; }
-.section--tint { background: rgba(255, 255, 255, .4); }
+.section--tint { background: transparent; }
 .section--rsvp { background: transparent; }
 .title {
   font-family: var(--serif); font-weight: 400;
