@@ -30,6 +30,16 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+/* Sfondo acquerello come l'invito "Nozze": velature azzurre su bianco, in diagonale */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 30% at -5% 52%, rgba(120, 198, 232, .85), transparent 70%),
+    radial-gradient(ellipse 55% 28% at 105% 28%, rgba(120, 198, 232, .8), transparent 70%),
+    radial-gradient(ellipse 60% 25% at 105% 80%, rgba(140, 206, 236, .6), transparent 70%),
+    radial-gradient(ellipse 50% 20% at 30% 100%, rgba(150, 210, 236, .5), transparent 70%),
+    linear-gradient(160deg, #dff0f8 0%, #ffffff 22%, #e4f3fa 40%, #ffffff 58%, #e8f5fb 74%, #cbe8f5 100%);
+}
 img, svg { display: block; max-width: 100%; }
 a { color: var(--dusty); }
 
@@ -77,10 +87,7 @@ a { color: var(--dusty); }
   display: grid; place-items: center; text-align: center;
   position: relative; overflow: hidden;
   padding: 6rem 1.5rem 4rem;
-  background:
-    radial-gradient(ellipse at 20% 15%, rgba(143, 208, 234, .55), transparent 55%),
-    radial-gradient(ellipse at 85% 85%, rgba(163, 184, 162, .3), transparent 55%),
-    var(--mist);
+  background: transparent;
 }
 .hero__floral { position: absolute; width: clamp(160px, 28vw, 340px); opacity: .9; pointer-events: none; }
 .hero__floral--tl { top: -10px; left: -20px; transform: rotate(90deg) scaleX(-1); }
@@ -146,8 +153,8 @@ a { color: var(--dusty); }
 
 /* ===== SECTIONS ===== */
 .section { padding: clamp(4.5rem, 10vw, 7.5rem) 0; text-align: center; }
-.section--tint { background: var(--ice); }
-.section--rsvp { background: linear-gradient(180deg, var(--mist), #d6ecf6); }
+.section--tint { background: rgba(255, 255, 255, .4); }
+.section--rsvp { background: transparent; }
 .title {
   font-family: var(--serif); font-weight: 400;
   font-size: clamp(2.1rem, 6vw, 3.2rem); line-height: 1.2; margin-top: .5rem;
@@ -243,7 +250,7 @@ a { color: var(--dusty); }
 .contacts a { text-decoration: none; }
 
 /* Footer */
-.footer { text-align: center; padding: 3.5rem 1rem; background: var(--ice); color: var(--ink-soft); letter-spacing: .15em; font-size: .85rem; }
+.footer { text-align: center; padding: 3.5rem 1rem; background: rgba(255, 255, 255, .55); color: var(--ink-soft); letter-spacing: .15em; font-size: .85rem; }
 .footer__names { font-family: var(--script); font-size: 2.6rem; color: var(--ink); letter-spacing: 0; }
 .footer__small { margin-top: .5rem; font-size: .75rem; }
 
