@@ -80,6 +80,11 @@ a { color: var(--dusty); }
 }
 .nav__cta:hover { background: var(--dusty); color: var(--white) !important; }
 .nav__toggle { display: none; }
+/* logo a destra, lontano dai fiori in alto a sinistra */
+.nav { justify-content: flex-end; gap: 1.8rem; }
+.nav__links { order: 1; }
+.nav__logo { order: 2; }
+.nav__toggle { order: 3; }
 
 /* ===== HERO ===== */
 .hero {
