@@ -89,7 +89,7 @@ a { color: var(--dusty); }
   padding: 6rem 1.5rem 4rem;
   background: transparent;
 }
-.hero__floral { position: absolute; pointer-events: none; z-index: 0; height: auto; }
+.hero__floral { position: fixed; pointer-events: none; z-index: -1; height: auto; }
 .hero__floral--tl { top: 0; left: 0; width: clamp(180px, 52vw, 440px); }
 .hero__floral--br { bottom: 0; right: 0; width: clamp(180px, 54vw, 450px); }
 .hero > *:not(.hero__floral):not(.hero__scroll) { position: relative; z-index: 1; }
