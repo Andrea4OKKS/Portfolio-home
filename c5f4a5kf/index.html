@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Noemi & Luca · 17 Settembre 2027</title>
+  <meta name="description" content="Siete invitati al matrimonio di Noemi e Luca. Tutte le informazioni su cerimonia, ricevimento e conferma presenza.">
+  <meta property="og:title" content="Noemi & Luca si sposano">
+  <meta property="og:description" content="17 Settembre 2027 · Tutte le informazioni sul nostro giorno speciale">
+  <meta name="theme-color" content="#f5fafd">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css?v=3">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a href="#home" class="nav__logo">N <span>&amp;</span> L</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <nav class="nav__links" id="navLinks">
+      <a href="#storia">La nostra storia</a>
+      <a href="#dove">Dove &amp; quando</a>
+      <a href="#programma">Programma</a>
+      <a href="#info">Info utili</a>
+      <a href="#regalo">Lista nozze</a>
+      <a href="#rsvp" class="nav__cta">Conferma</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <svg class="hero__floral hero__floral--tl" viewBox="0 0 200 200" aria-hidden="true"><use href="#floral"/></svg>
+    <svg class="hero__floral hero__floral--br" viewBox="0 0 200 200" aria-hidden="true"><use href="#floral"/></svg>
+
+    <div class="hero__content reveal">
+      <p class="hero__pre">Insieme alle loro famiglie</p>
+      <h1 class="hero__names">Noemi <span>&amp;</span> Luca</h1>
+      <p class="hero__sub">sono lieti di annunciare il loro matrimonio</p>
+      <div class="hero__date">
+        <span>Venerdì</span>
+        <strong>17 · 09 · 2027</strong>
+        <span>ore 11:00</span>
+      </div>
+      <p class="hero__place">Chiesa di San Giuseppe · Monfalcone</p>
+
+      <div class="countdown" id="countdown" aria-label="Conto alla rovescia">
+        <div><b id="cd-d">0</b><small>giorni</small></div>
+        <div><b id="cd-h">0</b><small>ore</small></div>
+        <div><b id="cd-m">0</b><small>minuti</small></div>
+        <div><b id="cd-s">0</b><small>secondi</small></div>
+      </div>
+
+      <a href="#rsvp" class="btn">Conferma la tua presenza</a>
+    </div>
+
+    <a href="#storia" class="hero__scroll" aria-label="Scorri giù"><span></span></a>
+  </section>
+
+  <!-- STORIA -->
+  <section class="section" id="storia">
+    <div class="container narrow reveal">
+      <p class="eyebrow">La nostra storia</p>
+      <h2 class="title">Da un caffè a un “sì”</h2>
+      <div class="divider"><svg viewBox="0 0 120 20" aria-hidden="true"><use href="#leafline"/></svg></div>
+      <p class="lead">
+        Ci siamo conosciuti in una piccola libreria in un pomeriggio di pioggia, entrambi alla ricerca
+        dello stesso libro. Da quel giorno abbiamo condiviso viaggi, risate, traslochi e infinite tazze di caffè.
+        Ora vogliamo vivere il giorno più bello della nostra vita circondati dalle persone che amiamo: voi.
+      </p>
+    </div>
+
+    <div class="container timeline-story reveal">
+      <div class="moment">
+        <span class="moment__year">2019</span>
+        <h3>Il primo incontro</h3>
+        <p>Una libreria, un temporale, un libro in comune.</p>
+      </div>
+      <div class="moment">
+        <span class="moment__year">2022</span>
+        <h3>La prima casa</h3>
+        <p>Scatoloni ovunque e una pianta che sopravvive a tutto.</p>
+      </div>
+      <div class="moment">
+        <span class="moment__year">2026</span>
+        <h3>La proposta</h3>
+        <p>Al tramonto, sulla stessa collina del primo viaggio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOVE & QUANDO -->
+  <section class="section section--tint" id="dove">
+    <div class="container reveal">
+      <p class="eyebrow">Dove &amp; quando</p>
+      <h2 class="title">Il grande giorno</h2>
+      <div class="divider"><svg viewBox="0 0 120 20" aria-hidden="true"><use href="#leafline"/></svg></div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M10 4h4M5 21V11l7-5 7 5v10M9 21v-5a3 3 0 0 1 6 0v5M3 21h18"/></svg>
+          </div>
+          <h3>Cerimonia</h3>
+          <p class="card__time">ore 11:00</p>
+          <p class="card__place">Chiesa di San Giuseppe</p>
+          <p class="card__addr">Via Largo Isonzo, 49<br>34074 Monfalcone (GO)</p>
+          <a class="btn btn--ghost" href="https://maps.google.com/?q=Chiesa+di+San+Giuseppe+Largo+Isonzo+Monfalcone" target="_blank" rel="noopener">Apri in Maps</a>
+        </article>
+
+        <article class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 22h8M12 15v7M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/></svg>
+          </div>
+          <h3>Ricevimento</h3>
+          <p class="card__time">a seguire</p>
+          <p class="card__place">Villa Iachia</p>
+          <p class="card__addr">Via Aquileia, 2<br>33050 Ruda (UD)</p>
+          <a class="btn btn--ghost" href="https://maps.google.com/?q=Villa+Iachia+Via+Aquileia+2+Ruda" target="_blank" rel="noopener">Apri in Maps</a>
+        </article>
+      </div>
+
+      <div class="calendar-cta">
+        <a class="btn btn--soft" href="#" id="addToCalendar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          Aggiungi al calendario
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMMA -->
+  <section class="section" id="programma">
+    <div class="container narrow reveal">
+      <p class="eyebrow">Programma</p>
+      <h2 class="title">Come sarà la giornata</h2>
+      <div class="divider"><svg viewBox="0 0 120 20" aria-hidden="true"><use href="#leafline"/></svg></div>
+
+      <ol class="schedule">
+        <li><time>10:30</time><div><h3>Accoglienza</h3><p>Arrivo degli ospiti in chiesa</p></div></li>
+        <li><time>11:00</time><div><h3>Cerimonia</h3><p>Il momento del “sì”</p></div></li>
+        <li><time>12:30</time><div><h3>Aperitivo</h3><p>Brindisi nel giardino della villa</p></div></li>
+        <li><time>13:30</time><div><h3>Pranzo</h3><p>Seduti tutti insieme, con vista sul giardino</p></div></li>
+        <li><time>17:00</time><div><h3>Taglio della torta</h3><p>…e poi tutti in pista!</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- INFO UTILI -->
+  <section class="section section--tint" id="info">
+    <div class="container reveal">
+      <p class="eyebrow">Info utili</p>
+      <h2 class="title">Tutto quello che serve sapere</h2>
+      <div class="divider"><svg viewBox="0 0 120 20" aria-hidden="true"><use href="#leafline"/></svg></div>
+
+      <div class="info-grid">
+        <div class="info">
+          <h3>Dress code</h3>
+          <p>Elegante. Per una giornata di fine estate vi suggeriamo colori tenui e scarpe comode per il prato del giardino.</p>
+        </div>
+        <div class="info">
+          <h3>Parcheggio</h3>
+          <p>Ampio parcheggio gratuito disponibile sia presso la chiesa che presso la villa.</p>
+        </div>
+        <div class="info">
+          <h3>Dove dormire</h3>
+          <p>Abbiamo riservato alcune camere all'Hotel Il Glicine (10 min dalla villa). Citate “Noemi &amp; Luca”.</p>
+        </div>
+        <div class="info">
+          <h3>Bambini</h3>
+          <p>I più piccoli sono i benvenuti! Ci sarà un'area giochi con animatrice dedicata.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGALO -->
+  <section class="section" id="regalo">
+    <div class="container narrow reveal">
+      <p class="eyebrow">Lista nozze</p>
+      <h2 class="title">Il regalo più bello</h2>
+      <div class="divider"><svg viewBox="0 0 120 20" aria-hidden="true"><use href="#leafline"/></svg></div>
+      <p class="lead">
+        La vostra presenza è il dono più grande. Se desiderate farci un regalo,
+        ci aiuterete a realizzare il nostro viaggio di nozze in Giappone.
+      </p>
+      <div class="gift">
+        <p class="gift__label">IBAN</p>
+        <p class="gift__iban" id="iban">IT00 X000 0000 0000 0000 0000 000</p>
+        <p class="gift__owner">Intestato a Noemi e Luca</p>
+        <button class="btn btn--soft" id="copyIban" type="button">Copia IBAN</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="section section--rsvp" id="rsvp">
+    <div class="container narrow reveal">
+      <p class="eyebrow">RSVP</p>
+      <h2 class="title">Ci sarai?</h2>
+      <div class="divider"><svg viewBox="0 0 120 20" aria-hidden="true"><use href="#leafline"/></svg></div>
+      <p class="lead">Vi chiediamo gentilmente di confermare la vostra presenza entro il <strong>31 Luglio 2027</strong>.</p>
+
+      <form class="rsvp" id="rsvpForm">
+        <div class="field">
+          <label for="nome">Nome e cognome</label>
+          <input id="nome" name="nome" type="text" required autocomplete="name">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="ospiti">Numero di persone</label>
+            <select id="ospiti" name="ospiti">
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="presenza">Parteciperai?</label>
+            <select id="presenza" name="presenza">
+              <option>Sì, con gioia!</option>
+              <option>Purtroppo no</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="note">Intolleranze, allergie o un messaggio per noi</label>
+          <textarea id="note" name="note" rows="3"></textarea>
+        </div>
+        <input type="hidden" name="invito" value="completo">
+        <input class="hp" type="text" name="sito" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn" type="submit">Invia conferma</button>
+        <p class="rsvp__msg" id="rsvpMsg" role="status"></p>
+      </form>
+
+      <p class="contacts">
+        Per qualsiasi domanda:<br>
+        Noemi <a href="tel:+390000000000">+39 000 000 0000</a> · Luca <a href="tel:+390000000001">+39 000 000 0001</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer__names">Noemi &amp; Luca</p>
+    <p>17 · 09 · 2027</p>
+    <p class="footer__small">Con amore 🤍</p>
+  </footer>
+
+  <!-- SVG sprites -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="floral" fill="none" stroke-linecap="round">
+        <path d="M10 190 C 50 140, 80 110, 150 30" stroke="#9db59c" stroke-width="2"/>
+        <path d="M40 150 C 20 140, 15 120, 25 105 C 40 115, 45 135, 40 150Z" fill="#bccfbb" />
+        <path d="M60 128 C 75 110, 95 108, 105 115 C 95 130, 75 135, 60 128Z" fill="#a7bea6" />
+        <path d="M85 98 C 70 80, 72 62, 82 52 C 95 66, 95 85, 85 98Z" fill="#bccfbb" />
+        <path d="M110 70 C 125 55, 142 55, 150 62 C 140 75, 122 78, 110 70Z" fill="#a7bea6" />
+        <circle cx="150" cy="30" r="14" fill="#a9bfdc"/>
+        <circle cx="150" cy="30" r="8" fill="#7f9cc2"/>
+        <circle cx="30" cy="100" r="9" fill="#c9d9ec"/>
+        <circle cx="30" cy="100" r="4" fill="#8fa8c8"/>
+        <circle cx="118" cy="110" r="7" fill="#a9bfdc"/>
+      </g>
+      <g id="leafline" fill="none" stroke="#9fb6cc" stroke-width="1.2" stroke-linecap="round">
+        <path d="M5 10 H48 M72 10 H115"/>
+        <path d="M60 3 C 55 7, 55 13, 60 17 C 65 13, 65 7, 60 3Z" fill="#c9d9ec" stroke="#7f9cc2"/>
+        <path d="M48 10 C 52 6, 55 6, 56 8 M72 10 C 68 6, 65 6, 64 8"/>
+      </g>
+    </defs>
+  </svg>
+
+  <script src="assets/script.js?v=3"></script>
+</body>
+</html>
