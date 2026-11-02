@@ -3,7 +3,7 @@ const EVENT = {
   title: "Matrimonio Noemi & Luca",
   start: new Date("2027-09-17T11:00:00+02:00"),
   end: new Date("2027-09-17T23:00:00+02:00"),
-  location: "Monfalcone (GO)",
+  location: "Chiesa di San Giuseppe, Via Largo Isonzo 49, Monfalcone (GO)",
 };
 
 // Nav: sfondo allo scroll + menu mobile
