@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=16">
+  <link rel="stylesheet" href="assets/style.css?v=18">
 </head>
 <body>
 
@@ -43,7 +43,7 @@
       <div class="hero__date">
         <span>Venerdì</span>
         <strong>17 · 09 · 2027</strong>
-        <span>ore 17:00</span>
+        <span>ore 19:00</span>
       </div>
       <p class="hero__place">Villa Iachia · Ruda</p>
 
@@ -67,16 +67,27 @@
   <section class="section section--tint" id="dove">
     <div class="container reveal">
       <p class="eyebrow">Dove &amp; quando</p>
-      <h2 class="title">La festa</h2>
+      <h2 class="title">Il grande giorno</h2>
       <div class="divider"><svg viewBox="0 0 120 20" aria-hidden="true"><use href="#leafline"/></svg></div>
 
-      <div class="cards cards--single">
+      <div class="cards">
+        <article class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M10 4h4M5 21V11l7-5 7 5v10M9 21v-5a3 3 0 0 1 6 0v5M3 21h18"/></svg>
+          </div>
+          <h3>Cerimonia</h3>
+          <p class="card__time">ore 11:00</p>
+          <p class="card__place">Chiesa di San Giuseppe</p>
+          <p class="card__addr">Via Largo Isonzo, 49<br>34074 Monfalcone (GO)</p>
+          <a class="btn btn--ghost" href="https://maps.google.com/?q=Chiesa+di+San+Giuseppe+Largo+Isonzo+Monfalcone" target="_blank" rel="noopener">Apri in Maps</a>
+        </article>
+
         <article class="card">
           <div class="card__icon">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21h16M5 21v-6h14v6M7 15v-3h10v3M12 12V9M12 5.5c.8 0 1.2-.7 1.2-1.3S12 2 12 2s-1.2 1.6-1.2 2.2.4 1.3 1.2 1.3z"/></svg>
           </div>
           <h3>Taglio della torta</h3>
-          <p class="card__time">ore 17:00</p>
+          <p class="card__time">ore 19:00</p>
           <p class="card__place">Villa Iachia</p>
           <p class="card__addr">Via Aquileia, 2<br>33050 Ruda (UD)</p>
           <a class="btn btn--ghost" href="https://maps.google.com/?q=Villa+Iachia+Via+Aquileia+2+Ruda" target="_blank" rel="noopener">Apri in Maps</a>
@@ -106,11 +117,7 @@
         </div>
         <div class="info">
           <h3>Parcheggio</h3>
-          <p>Ampio parcheggio gratuito disponibile presso la villa.</p>
-        </div>
-        <div class="info">
-          <h3>Bambini</h3>
-          <p>I più piccoli sono i benvenuti! Ci sarà un'area giochi con animatrice dedicata.</p>
+          <p>Ampio parcheggio gratuito disponibile sia presso la chiesa che presso la villa.</p>
         </div>
       </div>
     </div>
@@ -152,19 +159,11 @@
           </div>
         </fieldset>
 
-        <div class="rsvp__step" id="stepPersone" hidden>
-          <div class="field">
-            <label for="ospiti">Quante persone?</label>
-            <select id="ospiti" name="ospiti" required>
-              <option value="" selected disabled>Seleziona</option>
-              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-              <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-            </select>
-          </div>
-        </div>
-
         <div class="rsvp__step" id="stepDettagli" hidden>
-          <div id="nomi"></div>
+          <div class="field">
+            <label for="nome">Nome e cognome</label>
+            <input id="nome" name="nome" type="text" required autocomplete="name">
+          </div>
           <div class="field">
             <label for="note" id="noteLabel">Intolleranze, allergie o un messaggio per noi</label>
             <textarea id="note" name="note" rows="3"></textarea>
@@ -179,7 +178,7 @@
 
       <p class="contacts">
         Per qualsiasi domanda:<br>
-        Noemi <a href="tel:+393384291320">338 429 1320</a> · Luca <a href="tel:+393661911002">366 191 1002</a>
+        Noemi <a href="tel:+393384291320">+39 338 429 1320</a> · Luca <a href="tel:+393661911002">+39 366 191 1002</a>
       </p>
     </div>
   </section>
@@ -207,6 +206,6 @@
     </defs>
   </svg>
 
-  <script src="assets/script.js?v=5"></script>
+  <script src="assets/script.js?v=11"></script>
 </body>
 </html>

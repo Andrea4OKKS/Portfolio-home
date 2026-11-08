@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=16">
+  <link rel="stylesheet" href="assets/style.css?v=17">
 </head>
 <body>
 
@@ -163,19 +163,11 @@
           </div>
         </fieldset>
 
-        <div class="rsvp__step" id="stepPersone" hidden>
-          <div class="field">
-            <label for="ospiti">Quante persone?</label>
-            <select id="ospiti" name="ospiti" required>
-              <option value="" selected disabled>Seleziona</option>
-              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-              <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-            </select>
-          </div>
-        </div>
-
         <div class="rsvp__step" id="stepDettagli" hidden>
-          <div id="nomi"></div>
+          <div class="field">
+            <label for="nome">Nome e cognome</label>
+            <input id="nome" name="nome" type="text" required autocomplete="name">
+          </div>
           <div class="field">
             <label for="note" id="noteLabel">Intolleranze, allergie o un messaggio per noi</label>
             <textarea id="note" name="note" rows="3"></textarea>
@@ -190,7 +182,7 @@
 
       <p class="contacts">
         Per qualsiasi domanda:<br>
-        Noemi <a href="tel:+393384291320">338 429 1320</a> · Luca <a href="tel:+393661911002">366 191 1002</a>
+        Noemi <a href="tel:+393384291320">+39 338 429 1320</a> · Luca <a href="tel:+393661911002">+39 366 191 1002</a>
       </p>
     </div>
   </section>
@@ -218,6 +210,6 @@
     </defs>
   </svg>
 
-  <script src="assets/script.js?v=5"></script>
+  <script src="assets/script.js?v=11"></script>
 </body>
 </html>

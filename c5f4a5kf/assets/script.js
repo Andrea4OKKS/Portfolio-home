@@ -74,12 +74,9 @@ document.getElementById("copyIban").addEventListener("click", async e => {
 });
 
 // RSVP → Foglio Google
-// Passi: Parteciperai? (Sì/No) → Quante persone? → un campo nome per persona + note
+// Invito personale: Parteciperai? (Sì/No) → Nome e cognome + note (l'etichetta cambia con Sì/No)
 const form = document.getElementById("rsvpForm");
-const stepPersone = document.getElementById("stepPersone");
 const stepDettagli = document.getElementById("stepDettagli");
-const ospiti = document.getElementById("ospiti");
-const nomiBox = document.getElementById("nomi");
 const noteLabel = document.getElementById("noteLabel");
 
 function presenzaSi() {
@@ -88,29 +85,9 @@ function presenzaSi() {
 }
 
 form.querySelectorAll("input[name=presenza]").forEach(r => r.addEventListener("change", () => {
-  stepPersone.hidden = false;
+  stepDettagli.hidden = false;
   noteLabel.textContent = presenzaSi() ? "Intolleranze, allergie o un messaggio per noi" : "Note:";
 }));
-
-ospiti.addEventListener("change", () => {
-  const n = parseInt(ospiti.value, 10) || 0;
-  const vecchi = [...nomiBox.querySelectorAll("input")].map(i => i.value);
-  nomiBox.innerHTML = "";
-  for (let i = 0; i < n; i++) {
-    const id = `nome${i + 1}`;
-    const div = document.createElement("div");
-    div.className = "field";
-    const label = document.createElement("label");
-    label.htmlFor = id;
-    label.textContent = n === 1 ? "Nome e cognome" : `Persona ${i + 1} · Nome e cognome`;
-    const input = document.createElement("input");
-    Object.assign(input, { id, type: "text", required: true, value: vecchi[i] || "" });
-    input.autocomplete = i === 0 ? "name" : "off";
-    div.append(label, input);
-    nomiBox.append(div);
-  }
-  stepDettagli.hidden = n === 0;
-});
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
@@ -124,17 +101,13 @@ form.addEventListener("submit", async e => {
     return;
   }
 
-  const nomi = [...nomiBox.querySelectorAll("input")].map(i => i.value.trim()).filter(Boolean);
   const si = presenzaSi();
-  const tanti = nomi.length > 1;
-  const primo = (nomi[0] || "").split(" ")[0];
-
-  // Stesse colonne di sempre nel foglio: Nome e cognome (tutti i nomi), Persone, Presenza, Note
+  // Colonne del foglio: Nome e cognome, Persone, Presenza, Note
   const dati = new URLSearchParams({
-    nome: nomi.join(", "),
-    ospiti: ospiti.value,
+    nome: form.nome.value.trim(),
+    ospiti: "1",
     presenza: si ? "Sì" : "No",
-    note: form.note.value,
+    note: form.note.value.trim(),
     invito: form.invito.value,
     sito: form.sito.value,
   });
@@ -144,14 +117,26 @@ form.addEventListener("submit", async e => {
   try {
     // no-cors: Google Apps Script non restituisce intestazioni CORS leggibili
     await fetch(RSVP_URL, { method: "POST", mode: "no-cors", body: dati });
-    msg.textContent = si
-      ? `Grazie ${primo}! Non vediamo l'ora di festeggiare con ${tanti ? "voi" : "te"} 🤍`
-      : `Grazie ${primo}, ${tanti ? "ci mancherete" : "ci mancherai"}! Abbiamo ricevuto la tua risposta 🤍`;
-    form.reset();
-    nomiBox.innerHTML = "";
-    stepPersone.hidden = true;
-    stepDettagli.hidden = true;
-    noteLabel.textContent = "Intolleranze, allergie o un messaggio per noi";
+
+    // Al posto del modulo compare un grande messaggio di ringraziamento
+    const grazie = document.createElement("div");
+    grazie.className = "rsvp__grazie";
+    grazie.setAttribute("role", "status");
+    const titolo = document.createElement("p");
+    titolo.className = "rsvp__grazie-titolo";
+    const testo = document.createElement("p");
+    testo.className = "rsvp__grazie-testo";
+    if (si) {
+      titolo.textContent = "Grazie, non vediamo l'ora di festeggiare insieme";
+      testo.textContent = "🤍";
+    } else {
+      titolo.textContent = "Grazie per avercelo fatto sapere";
+      testo.textContent = "Ci dispiace non potervi avere con noi: vi penseremo con affetto in questo giorno speciale. 🤍";
+    }
+    grazie.append(titolo, testo);
+    [...form.children].forEach(el => (el.hidden = true));
+    form.append(grazie);
+    form.scrollIntoView({ behavior: "smooth", block: "center" });
   } catch {
     msg.classList.add("error");
     msg.textContent = "Ops, invio non riuscito. Controlla la connessione e riprova.";
