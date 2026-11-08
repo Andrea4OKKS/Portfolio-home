@@ -74,20 +74,82 @@ document.getElementById("copyIban").addEventListener("click", async e => {
 });
 
 // RSVP → Foglio Google
-// Invito personale: Parteciperai? (Sì/No) → Nome e cognome + note (l'etichetta cambia con Sì/No)
+// Passi: Parteciperai? (Sì/No) → Quante persone? → un campo nome e una nota per ogni persona.
+// La tendina "La nota riguarda:" mostra la nota della persona scelta; le altre restano in memoria.
 const form = document.getElementById("rsvpForm");
+const stepPersone = document.getElementById("stepPersone");
 const stepDettagli = document.getElementById("stepDettagli");
+const ospiti = document.getElementById("ospiti");
+const nomiBox = document.getElementById("nomi");
+const noteBox = document.getElementById("noteBox");
 const noteLabel = document.getElementById("noteLabel");
+const notaPerBox = document.getElementById("notaPerBox");
+const notaPer = document.getElementById("notaPer");
+
+const nomiInput = () => [...nomiBox.querySelectorAll("input")];
+const noteInput = () => [...noteBox.querySelectorAll("textarea")];
 
 function presenzaSi() {
   const r = form.querySelector("input[name=presenza]:checked");
   return r && r.value === "Sì";
 }
 
+// Mostra solo la nota della persona scelta
+function mostraNota() {
+  const scelta = parseInt(notaPer.value, 10) || 0;
+  noteInput().forEach((t, i) => (t.hidden = i !== scelta));
+  noteLabel.htmlFor = `nota${scelta + 1}`;
+}
+
+// Tendina con i nomi inseriti (✎ = nota già scritta); visibile solo se le persone sono più di una
+function aggiornaNotaPer() {
+  const nomi = nomiInput(), note = noteInput();
+  const scelto = notaPer.value;
+  notaPer.innerHTML = "";
+  nomi.forEach((inp, i) => {
+    const nome = inp.value.trim() || `Persona ${i + 1}`;
+    const conNota = note[i] && note[i].value.trim() ? "  ✎" : "";
+    notaPer.add(new Option(nome + conNota, String(i)));
+  });
+  notaPer.value = scelto && +scelto < nomi.length ? scelto : "0";
+  notaPerBox.hidden = nomi.length < 2;
+  mostraNota();
+}
+
 form.querySelectorAll("input[name=presenza]").forEach(r => r.addEventListener("change", () => {
-  stepDettagli.hidden = false;
+  stepPersone.hidden = false;
   noteLabel.textContent = presenzaSi() ? "Intolleranze, allergie o un messaggio per noi" : "Note:";
 }));
+
+ospiti.addEventListener("change", () => {
+  const n = parseInt(ospiti.value, 10) || 0;
+  const vecchiNomi = nomiInput().map(i => i.value);
+  const vecchieNote = noteInput().map(t => t.value);
+  nomiBox.innerHTML = "";
+  noteBox.innerHTML = "";
+  for (let i = 0; i < n; i++) {
+    const div = document.createElement("div");
+    div.className = "field";
+    const label = document.createElement("label");
+    label.htmlFor = `nome${i + 1}`;
+    label.textContent = n === 1 ? "Nome e cognome" : `Persona ${i + 1} · Nome e cognome`;
+    const input = document.createElement("input");
+    Object.assign(input, { id: `nome${i + 1}`, type: "text", required: true, value: vecchiNomi[i] || "" });
+    input.autocomplete = i === 0 ? "name" : "off";
+    div.append(label, input);
+    nomiBox.append(div);
+
+    const nota = document.createElement("textarea");
+    Object.assign(nota, { id: `nota${i + 1}`, rows: 3, value: vecchieNote[i] || "" });
+    noteBox.append(nota);
+  }
+  aggiornaNotaPer();
+  stepDettagli.hidden = n === 0;
+});
+
+nomiBox.addEventListener("input", aggiornaNotaPer);
+noteBox.addEventListener("change", aggiornaNotaPer); // aggiorna il segno ✎ quando si esce dalla nota
+notaPer.addEventListener("change", mostraNota);
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
@@ -101,22 +163,28 @@ form.addEventListener("submit", async e => {
     return;
   }
 
+  const nomi = nomiInput().map(i => i.value.trim());
+  const note = noteInput().map(t => t.value.trim());
   const si = presenzaSi();
-  // Colonne del foglio: Nome e cognome, Persone, Presenza, Note
-  const dati = new URLSearchParams({
-    nome: form.nome.value.trim(),
-    ospiti: "1",
+
+  // Una riga del foglio per ogni persona: Nome e cognome, Persone ("1 di 3"), Presenza, la sua Nota
+  const righe = nomi.map((nome, i) => new URLSearchParams({
+    nome,
+    ospiti: `${i + 1} di ${nomi.length}`,
     presenza: si ? "Sì" : "No",
-    note: form.note.value.trim(),
+    note: note[i] || "",
     invito: form.invito.value,
     sito: form.sito.value,
-  });
+  }));
 
   btn.disabled = true;
   btn.textContent = "Invio in corso…";
   try {
-    // no-cors: Google Apps Script non restituisce intestazioni CORS leggibili
-    await fetch(RSVP_URL, { method: "POST", mode: "no-cors", body: dati });
+    // no-cors: Google Apps Script non restituisce intestazioni CORS leggibili.
+    // Invio una persona alla volta, così le righe restano in ordine.
+    for (const dati of righe) {
+      await fetch(RSVP_URL, { method: "POST", mode: "no-cors", body: dati });
+    }
 
     // Al posto del modulo compare un grande messaggio di ringraziamento
     const grazie = document.createElement("div");

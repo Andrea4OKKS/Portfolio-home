@@ -163,14 +163,27 @@
           </div>
         </fieldset>
 
-        <div class="rsvp__step" id="stepDettagli" hidden>
+        <div class="rsvp__step" id="stepPersone" hidden>
           <div class="field">
-            <label for="nome">Nome e cognome</label>
-            <input id="nome" name="nome" type="text" required autocomplete="name">
+            <label for="ospiti">Quante persone?</label>
+            <select id="ospiti" name="ospiti" required>
+              <option value="" selected disabled>Seleziona</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+            </select>
           </div>
+        </div>
+
+        <div class="rsvp__step" id="stepDettagli" hidden>
+          <div id="nomi"></div>
+          <div class="field" id="notaPerBox" hidden>
+            <label for="notaPer">La nota riguarda:</label>
+            <select id="notaPer"></select>
+          </div>
+
           <div class="field">
-            <label for="note" id="noteLabel">Intolleranze, allergie o un messaggio per noi</label>
-            <textarea id="note" name="note" rows="3"></textarea>
+            <label for="nota1" id="noteLabel">Intolleranze, allergie o un messaggio per noi</label>
+            <div id="noteBox"></div>
           </div>
           <button class="btn" type="submit">Invia conferma</button>
         </div>
@@ -210,6 +223,6 @@
     </defs>
   </svg>
 
-  <script src="assets/script.js?v=11"></script>
+  <script src="assets/script.js?v=12"></script>
 </body>
 </html>
