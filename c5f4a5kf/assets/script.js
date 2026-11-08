@@ -74,9 +74,46 @@ document.getElementById("copyIban").addEventListener("click", async e => {
 });
 
 // RSVP → Foglio Google
-document.getElementById("rsvpForm").addEventListener("submit", async e => {
+// Passi: Parteciperai? (Sì/No) → Quante persone? → un campo nome per persona + note
+const form = document.getElementById("rsvpForm");
+const stepPersone = document.getElementById("stepPersone");
+const stepDettagli = document.getElementById("stepDettagli");
+const ospiti = document.getElementById("ospiti");
+const nomiBox = document.getElementById("nomi");
+const noteLabel = document.getElementById("noteLabel");
+
+function presenzaSi() {
+  const r = form.querySelector("input[name=presenza]:checked");
+  return r && r.value === "Sì";
+}
+
+form.querySelectorAll("input[name=presenza]").forEach(r => r.addEventListener("change", () => {
+  stepPersone.hidden = false;
+  noteLabel.textContent = presenzaSi() ? "Intolleranze, allergie o un messaggio per noi" : "Note:";
+}));
+
+ospiti.addEventListener("change", () => {
+  const n = parseInt(ospiti.value, 10) || 0;
+  const vecchi = [...nomiBox.querySelectorAll("input")].map(i => i.value);
+  nomiBox.innerHTML = "";
+  for (let i = 0; i < n; i++) {
+    const id = `nome${i + 1}`;
+    const div = document.createElement("div");
+    div.className = "field";
+    const label = document.createElement("label");
+    label.htmlFor = id;
+    label.textContent = n === 1 ? "Nome e cognome" : `Persona ${i + 1} · Nome e cognome`;
+    const input = document.createElement("input");
+    Object.assign(input, { id, type: "text", required: true, value: vecchi[i] || "" });
+    input.autocomplete = i === 0 ? "name" : "off";
+    div.append(label, input);
+    nomiBox.append(div);
+  }
+  stepDettagli.hidden = n === 0;
+});
+
+form.addEventListener("submit", async e => {
   e.preventDefault();
-  const form = e.target;
   const msg = document.getElementById("rsvpMsg");
   const btn = form.querySelector("button[type=submit]");
   msg.classList.remove("error");
@@ -87,16 +124,34 @@ document.getElementById("rsvpForm").addEventListener("submit", async e => {
     return;
   }
 
-  const nome = form.nome.value.trim().split(" ")[0];
+  const nomi = [...nomiBox.querySelectorAll("input")].map(i => i.value.trim()).filter(Boolean);
+  const si = presenzaSi();
+  const tanti = nomi.length > 1;
+  const primo = (nomi[0] || "").split(" ")[0];
+
+  // Stesse colonne di sempre nel foglio: Nome e cognome (tutti i nomi), Persone, Presenza, Note
+  const dati = new URLSearchParams({
+    nome: nomi.join(", "),
+    ospiti: ospiti.value,
+    presenza: si ? "Sì" : "No",
+    note: form.note.value,
+    invito: form.invito.value,
+    sito: form.sito.value,
+  });
+
   btn.disabled = true;
   btn.textContent = "Invio in corso…";
   try {
     // no-cors: Google Apps Script non restituisce intestazioni CORS leggibili
-    await fetch(RSVP_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams(new FormData(form)) });
-    msg.textContent = form.presenza.value.startsWith("Sì")
-      ? `Grazie ${nome}! Non vediamo l'ora di festeggiare con te 🤍`
-      : `Grazie ${nome}, ci mancherai! Abbiamo ricevuto la tua risposta 🤍`;
+    await fetch(RSVP_URL, { method: "POST", mode: "no-cors", body: dati });
+    msg.textContent = si
+      ? `Grazie ${primo}! Non vediamo l'ora di festeggiare con ${tanti ? "voi" : "te"} 🤍`
+      : `Grazie ${primo}, ${tanti ? "ci mancherete" : "ci mancherai"}! Abbiamo ricevuto la tua risposta 🤍`;
     form.reset();
+    nomiBox.innerHTML = "";
+    stepPersone.hidden = true;
+    stepDettagli.hidden = true;
+    noteLabel.textContent = "Intolleranze, allergie o un messaggio per noi";
   } catch {
     msg.classList.add("error");
     msg.textContent = "Ops, invio non riuscito. Controlla la connessione e riprova.";

@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=15">
+  <link rel="stylesheet" href="assets/style.css?v=16">
 </head>
 <body>
 
@@ -120,7 +120,7 @@
   <section class="section" id="regalo">
     <div class="container narrow reveal">
       <p class="eyebrow">Lista nozze</p>
-      <h2 class="title">Il regalo più bello</h2>
+      <h2 class="title">Un sogno nel cassetto</h2>
       <div class="divider"><svg viewBox="0 0 120 20" aria-hidden="true"><use href="#leafline"/></svg></div>
       <p class="lead">
         La vostra presenza è il dono più grande. Se desiderate farci un regalo,
@@ -144,38 +144,42 @@
       <p class="lead">Vi chiediamo gentilmente di confermare la vostra presenza entro il <strong>31 Luglio 2027</strong>.</p>
 
       <form class="rsvp" id="rsvpForm">
-        <div class="field">
-          <label for="nome">Nome e cognome</label>
-          <input id="nome" name="nome" type="text" required autocomplete="name">
-        </div>
-        <div class="field-row">
+        <fieldset class="choice">
+          <legend>Parteciperai?</legend>
+          <div class="choice__opts">
+            <label><input type="radio" name="presenza" value="Sì" required><span>Sì</span></label>
+            <label><input type="radio" name="presenza" value="No"><span>No</span></label>
+          </div>
+        </fieldset>
+
+        <div class="rsvp__step" id="stepPersone" hidden>
           <div class="field">
-            <label for="ospiti">Numero di persone</label>
-            <select id="ospiti" name="ospiti">
-              <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+            <label for="ospiti">Quante persone?</label>
+            <select id="ospiti" name="ospiti" required>
+              <option value="" selected disabled>Seleziona</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
             </select>
           </div>
+        </div>
+
+        <div class="rsvp__step" id="stepDettagli" hidden>
+          <div id="nomi"></div>
           <div class="field">
-            <label for="presenza">Parteciperai?</label>
-            <select id="presenza" name="presenza">
-              <option>Sì, con gioia!</option>
-              <option>Purtroppo no</option>
-            </select>
+            <label for="note" id="noteLabel">Intolleranze, allergie o un messaggio per noi</label>
+            <textarea id="note" name="note" rows="3"></textarea>
           </div>
+          <button class="btn" type="submit">Invia conferma</button>
         </div>
-        <div class="field">
-          <label for="note">Intolleranze, allergie o un messaggio per noi</label>
-          <textarea id="note" name="note" rows="3"></textarea>
-        </div>
+
         <input type="hidden" name="invito" value="torta">
         <input class="hp" type="text" name="sito" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn" type="submit">Invia conferma</button>
         <p class="rsvp__msg" id="rsvpMsg" role="status"></p>
       </form>
 
       <p class="contacts">
         Per qualsiasi domanda:<br>
-        Noemi <a href="tel:+390000000000">+39 000 000 0000</a> · Luca <a href="tel:+390000000001">+39 000 000 0001</a>
+        Noemi <a href="tel:+393384291320">338 429 1320</a> · Luca <a href="tel:+393661911002">366 191 1002</a>
       </p>
     </div>
   </section>
@@ -203,6 +207,6 @@
     </defs>
   </svg>
 
-  <script src="assets/script.js?v=4"></script>
+  <script src="assets/script.js?v=5"></script>
 </body>
 </html>
