@@ -97,7 +97,7 @@ a { color: var(--dusty); }
   min-height: 100vh; min-height: 100svh;
   display: grid; place-items: center; text-align: center;
   position: relative; overflow: hidden;
-  padding: 6rem 1.5rem 4rem;
+  padding: 6rem 1.5rem 9.5rem; /* spazio in basso riservato alla mano */
   background: transparent;
 }
 .hero__floral { position: fixed; pointer-events: none; z-index: -1; height: auto; }
@@ -142,7 +142,9 @@ a { color: var(--dusty); }
 .hero__scroll {
   position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
   width: 80px; height: 110px;
+  transition: opacity .5s ease;
 }
+.hero__scroll.is-hidden { opacity: 0; pointer-events: none; }
 /* dito che trascina verso l'alto (gesto per scorrere giù):
    mano a destra della scia, inclinata di 45° con la punta verso la linea */
 .hero__hand {

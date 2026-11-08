@@ -13,7 +13,11 @@ const RSVP_URL = "https://script.google.com/macros/s/AKfycbws2HloVqnYOffxMwAgXOd
 const nav = document.getElementById("nav");
 const toggle = document.getElementById("navToggle");
 const links = document.getElementById("navLinks");
-window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 40), { passive: true });
+const heroScroll = document.querySelector(".hero__scroll");
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 40);
+  if (heroScroll) heroScroll.classList.toggle("is-hidden", window.scrollY > 20); // la mano sparisce appena si scorre
+}, { passive: true });
 toggle.addEventListener("click", () => {
   const open = links.classList.toggle("open");
   toggle.setAttribute("aria-expanded", open);
